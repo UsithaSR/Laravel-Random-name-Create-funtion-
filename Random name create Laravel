@@ -1,0 +1,10 @@
+public static function randomFileNameCreate($path, $extension)
+    {
+        $timestamp = round(microtime(true) * 1000);
+        $fileName = $timestamp . rand(111111111, 999999999) . '.' . $extension;
+        if (file_exists(storage_path($path . $fileName))) {
+            return randomFileNameCreate($path, $extension);
+        } else {
+            return $fileName;
+        }
+    }
